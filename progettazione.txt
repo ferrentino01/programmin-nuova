@@ -1,0 +1,26 @@
+[ heart.csv ] 
+     │
+     ▼ (Esecuzione Una Tantum)
+┌────────────────────────────────────────────────────────┐
+│ 1. pipeline.py (Classe HeartDiseasePipeline)           │
+│    - Ingestione, pulizia, rimozione duplicati          │
+│    - Addestramento Random Forest Classifier            │
+│    - Output: modello_cardio.pkl & statistiche.json     │
+└────────────────────────────────────────────────────────┘
+     │
+     ▼ (File binari generati e caricati in RAM)
+┌────────────────────────────────────────────────────────┐
+│ 2. server_diagnosi_mcp.py (FastMCP Framework)         │
+│    - Carica i modelli ed espone i Tool clinici         │
+│    - Esegue validazione dei range fisiologici         │
+│    - Anonimizza i log del paziente in SHA-256          │
+└────────────────────────────────────────────────────────┘
+     ▲
+     │ (Canale Standard I/O - Protocollo JSON-RPC)
+     ▼
+┌────────────────────────────────────────────────────────┐
+│ 3. agente.py (MedicalAIAgent - Client Asincrono)       │
+│    - Simula l'interfaccia dell'Agente AI Generativo    │
+│    - Riceve il prompt in linguaggio naturale           │
+│    - Chiama i tool dell'MCP e formatta il report      │
+└────────────────────────────────────────────────────────┘
